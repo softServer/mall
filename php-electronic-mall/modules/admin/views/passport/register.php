@@ -22,7 +22,7 @@ $logo = Option::get('logo', 0, 'admin', null);
 $logo = $logo ? $logo : Yii::$app->request->baseUrl . '/statics/admin/images/logo.png';
 
 $copyright = Option::get('copyright', 0, 'admin');
-$copyright = $copyright ? $copyright : '©2017 <a href="http://www.zjhejiang.com" target="_blank">禾匠信息科技</a>';
+$copyright = $copyright ? $copyright : '©2020 <a href="http://www.zjhejiang.com" target="_blank">爱享科技</a>';
 
 $passport_bg = Option::get('passport_bg', 0, 'admin', Yii::$app->request->baseUrl . '/statics/admin/images/passport-bg.jpg');
 ?>

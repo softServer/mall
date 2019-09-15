@@ -15,7 +15,7 @@ $this->title = '管理员登录';
 $logo = Option::get('logo', 0, 'admin', null);
 $logo = $logo ? $logo : Yii::$app->request->baseUrl . '/statics/admin/images/logo.png';
 $copyright = Option::get('copyright', 0, 'admin');
-$copyright = $copyright ? $copyright : '©2017 <a href="http://www.zjhejiang.com" target="_blank">禾匠信息科技</a>';
+$copyright = $copyright ? $copyright : '©2020 <a href="http://www.baidu.com" target="_blank">爱享科技</a>';
 $passport_bg = Option::get('passport_bg', 0, 'admin', Yii::$app->request->baseUrl . '/statics/admin/images/passport-bg.jpg');
 $open_register = Option::get('open_register', 0, 'admin', false);
 ?>
@@ -222,7 +222,7 @@ $open_register = Option::get('open_register', 0, 'admin', false);
                         content: res.msg
                     });
                 }else  {
-                    location.href = "<?= \Yii::$app->urlManager->createUrl('admin/user/me') ?>";
+                    location.href = "<?= \Yii::$app->urlManager->createUrl(['admin/app/entry', 'id' => 1]) ?>";
                 }
             }
         })

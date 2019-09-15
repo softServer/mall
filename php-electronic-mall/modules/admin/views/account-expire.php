@@ -11,7 +11,7 @@ $logo = Option::get('logo', 0, 'admin', null);
 $logo = $logo ? $logo : Yii::$app->request->baseUrl . '/statics/admin/images/logo.png';
 
 $copyright = Option::get('copyright', 0, 'admin');
-$copyright = $copyright ? $copyright : '©2017 <a href="http://www.zjhejiang.com" target="_blank">禾匠信息科技</a>';
+$copyright = $copyright ? $copyright : '©2017 <a href="http://www.zjhejiang.com" target="_blank">爱享科技</a>';
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -20,7 +20,7 @@ $copyright = $copyright ? $copyright : '©2017 <a href="http://www.zjhejiang.com
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title><?= !empty($this->title) ? $this->title . ' - ' : null ?><?= Option::get('name', 0, 'admin', '禾匠信息科技') ?></title>
+    <title><?= !empty($this->title) ? $this->title . ' - ' : null ?><?= Option::get('name', 0, 'admin', '爱享科技') ?></title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_353057_pv3mzjwdrk162yb9.css">
     <link rel="stylesheet" href="<?= Yii::$app->request->baseUrl ?>/statics/admin/css/common.css?v=<?= $version ?>">

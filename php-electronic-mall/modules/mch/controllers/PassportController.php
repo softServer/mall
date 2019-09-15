@@ -106,6 +106,8 @@ class PassportController extends \app\controllers\Controller
 
     public function actionLogout()
     {
+        /*\Yii::$app->admin->logout();
+        \Yii::$app->response->redirect(\Yii::$app->urlManager->createUrl(['admin']))->send();*/
         $url = $_COOKIE['adminLoginUrl'];
         \Yii::$app->session->remove('store_id');
         \Yii::$app->response->redirect($url)->send();

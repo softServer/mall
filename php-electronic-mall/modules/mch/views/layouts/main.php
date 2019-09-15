@@ -283,26 +283,32 @@ function getCurrentMenu($menu_list, $route, $return = [], $level = 0)
 
             <div class="btn-group float-left">
                 <a href="javascript:" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                    <?= $this->context->store->name ?>
+                    <?php if (Yii::$app->user->isGuest == false): ?>
+                       管理员：<?= Yii::$app->user->identity->nickname ?>
+                    <?php elseif (Yii::$app->admin->isGuest == false): ?>
+                        管理员:<?= Yii::$app->admin->identity->username ?>
+                    <?php else: ?>
+                        操作员:<?= Yii::$app->mchRoleAdmin->identity->nickname ?>
+                    <?php endif; ?>
                 </a>
+
+
                 <div class="dropdown-menu dropdown-menu-right">
-                    <?php if (Yii::$app->user->isGuest == false): ?>
-                        <p class="dropdown-item">管理员：<?= Yii::$app->user->identity->nickname ?></p>
-                    <?php elseif (Yii::$app->admin->isGuest == false): ?>
-                        <p class="dropdown-item">管理员:<?= Yii::$app->admin->identity->username ?></p>
-                    <?php else: ?>
-                        <p class="dropdown-item">操作员:<?= Yii::$app->mchRoleAdmin->identity->nickname ?></p>
-                    <?php endif; ?>
-                    <?php if (Yii::$app->user->isGuest == false): ?>
+
+                    <a class="dropdown-item alter-password" href="javascript:" data-toggle="modal"
+                       data-target="#alterPassword">修改密码</a>
+                    <a class="dropdown-item" href="<?= Yii::$app->urlManager->createUrl(['admin/passport/logout']) ?>">注销</a>
+
+                    <?php /*if (Yii::$app->user->isGuest == false): */?><!--
                         <a class="dropdown-item"
-                           href="<?= Yii::$app->urlManager->createUrl(['mch/passport/logout']) ?>">返回系统</a>
-                    <?php elseif (Yii::$app->admin->isGuest == false): ?>
+                           href="<?/*= Yii::$app->urlManager->createUrl(['mch/passport/logout']) */?>">返回系统</a>
+                    <?php /*elseif (Yii::$app->admin->isGuest == false): */?>
                         <a class="dropdown-item"
-                           href="<?= Yii::$app->urlManager->createUrl(['mch/passport/logout']) ?>">返回系统</a>
-                    <?php else: ?>
+                           href="<?/*= Yii::$app->urlManager->createUrl(['mch/passport/logout']) */?>">返回系统</a>
+                    <?php /*else: */?>
                         <a class="dropdown-item"
-                           href="<?= Yii::$app->urlManager->createUrl(['mch/permission/passport/logout']) ?>">退出登录</a>
-                    <?php endif; ?>
+                           href="<?/*= Yii::$app->urlManager->createUrl(['mch/permission/passport/logout']) */?>">退出登录</a>
+                    --><?php /*endif; */?>
                 </div>
             </div>
         </div>

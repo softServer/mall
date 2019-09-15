@@ -12,7 +12,7 @@ $logo = Option::get('logo', 0, 'admin', null);
 $logo = $logo ? $logo : Yii::$app->request->baseUrl . '/statics/admin/images/logo.png';
 
 $copyright = Option::get('copyright', 0, 'admin');
-$copyright = $copyright ? $copyright : '©2017 <a href="http://www.zjhejiang.com" target="_blank">禾匠信息科技</a>';
+$copyright = $copyright ? $copyright : '©2020 <a href="http://www.baidu.com" target="_blank">爱享科技</a>';
 
 $adminMenu = new AdminMenu();
 $adminMenuList = $adminMenu->getMenu();
@@ -27,7 +27,7 @@ $currentRoute = Yii::$app->controller->route
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title><?= !empty($this->title) ? $this->title . ' - ' : null ?><?= Option::get('name', 0, 'admin', '禾匠信息科技') ?></title>
+    <title><?= !empty($this->title) ? $this->title . ' - ' : null ?><?= Option::get('name', 0, 'admin', '爱享科技') ?></title>
     <link rel="stylesheet"
           href="<?= Yii::$app->request->baseUrl ?>/statics/admin/css/bootstrap.min.css?v=<?= $version ?>">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_353057_c9nwwwd9rt7.css">
