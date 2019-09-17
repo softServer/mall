@@ -1,3 +1,10 @@
+create database phpdata;
+CREATE USER 'phpdba'@'%' IDENTIFIED BY '123456';
+GRANT all privileges on phpdata.* to 'phpdba'@'%';
+
+flush privileges;
+
+
 -- ----------------------------
 -- Table structure for `hjmallind_action_log`
 -- ----------------------------
@@ -7431,3 +7438,16 @@ ALTER TABLE `hjmallind_plugin`
 
   
 ALTER TABLE `hjmallind_task` ADD COLUMN `content`  longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '任务说明' AFTER `is_delete`;
+
+
+/*
+
+INSERT INTO `hjmallind_store` (`id`, `admin_id`, `is_delete`, `is_recycle`, `acid`, `user_id`, `wechat_platform_id`, `wechat_app_id`, `name`, `order_send_tpl`, `contact_tel`, `show_customer_service`, `copyright`, `copyright_pic_url`, `copyright_url`, `delivery_time`, `after_sale_time`, `use_wechat_platform_pay`, `kdniao_mch_id`, `kdniao_api_key`, `cat_style`, `home_page_module`, `address`, `cat_goods_cols`, `over_day`, `is_offline`, `is_coupon`, `cat_goods_count`, `send_type`, `member_content`, `nav_count`, `integral`, `integration`, `dial`, `dial_pic`, `cut_thread`, `purchase_frame`, `is_recommend`, `recommend_count`, `status`, `is_comment`, `is_sales`, `is_member_price`, `is_share_price`, `is_member`, `good_negotiable`, `buy_member`, `logo`, `is_official_account`) VALUES ('1', '1', '0', '0', '0', '0', '0', '1', '测试小程序', '', '', '1', '', NULL, NULL, '10', '7', '0', '', '', '1', NULL, NULL, '3', '0', '0', '0', '6', '1', NULL, '0', '10', NULL, NULL, NULL, NULL, '0', '0', '0', '0', '1', '1', '1', '1', '0', '', '0', NULL, '0');
+
+
+INSERT INTO `hjmallind_setting` (`id`, `first`, `second`, `third`, `store_id`, `level`, `condition`, `share_condition`, `content`, `pay_type`, `min_money`, `agree`, `first_name`, `second_name`, `third_name`, `pic_url_1`, `pic_url_2`, `price_type`, `bank`, `remaining_sum`, `rebate`, `is_rebate`, `share_good_status`, `share_good_id`) VALUES ('1', '0.00', '0.00', '0.00', '1', '0', '0', '0', NULL, '0', '1.00', NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, '0', '0.00', '0', '0', '0');
+
+
+INSERT INTO `hjmallind_wechat_app` (`id`, `acid`, `user_id`, `name`, `app_id`, `app_secret`, `desc`, `mch_id`, `key`, `cert_pem`, `key_pem`, `addtime`, `is_delete`) VALUES ('1', '0', '0', '测试小程序', '0', '0', NULL, '0', '0', '', '', '0', '0');
+
+*/

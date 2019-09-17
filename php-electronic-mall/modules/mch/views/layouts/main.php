@@ -438,6 +438,51 @@ function getCurrentMenu($menu_list, $route, $return = [], $level = 0)
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="alterPassword" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">修改密码</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" class="auto-submit-form alter-password-form">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label required">原密码</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="old_password" class="form-control"
+                                   placeholder="您当前的密码">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label required">新密码</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="new_password" class="form-control new-password-1"
+                                   placeholder="要设置的新密码">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label required">确认密码</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control new-password-2" placeholder="再次输入新密码">
+                        </div>
+                    </div>
+                    <div class="form-error alert alert-danger" style="display: none">aaaaaa</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary alter-password-submit">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?= $this->render('/layouts/auth-tip.php') ?>
 
 <script>
@@ -495,8 +540,43 @@ function getCurrentMenu($menu_list, $route, $return = [], $level = 0)
         $(this).parents(".input-group").find(".form-control").val(val);
     });
 
+    $(document).on("click", ".alter-password-submit", function () {
+        var new_password_1 = $(".alter-password-form .new-password-1").val();
+        var new_password_2 = $(".alter-password-form .new-password-2").val();
+        var error = $(".alter-password-form .form-error");
+        var btn = $(this);
+        if (new_password_1 !== new_password_2) {
+            error.html("新密码与确认密码不一致，请重新输入").show();
+            return false;
+        }
+        error.hide();
+        btn.btnLoading();
+        $.ajax({
+            url: "<?=Yii::$app->urlManager->createUrl(['admin/default/alter-password'])?>",
+            type: "post",
+            dataType: "json",
+            data: $(".alter-password-form").serialize(),
+            success: function (res) {
+                if (res.code == 0) {
+                    $("#alterPassword").modal("hide");
+                    $.myAlert({
+                        content: res.msg,
+                        confirm: function () {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    error.html(res.msg).show();
+                    btn.btnReset();
+                }
+            }
+        });
+    });
+
+
     //图片库vue对象
     var file_app;
+
 </script>
 <?php $this->endBody(); ?>
 </body>

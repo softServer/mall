@@ -13,6 +13,7 @@ class Local extends BaseDriver
 
     public function put($localFile, $saveTo)
     {
+        $relativePath = $saveTo;
         $saveTo = \Yii::$app->basePath . '/' . $saveTo;
         $saveDir = dirname($saveTo);
         try {
@@ -26,7 +27,8 @@ class Local extends BaseDriver
         } catch (\Exception $ex) {
             throw new StorageException($ex->getMessage());
         }
-        $accessUrl = \Yii::$app->request->hostInfo . '/' . static::getRelativePath(realpath($_SERVER['DOCUMENT_ROOT']), $saveTo);
+        $accessUrl = \Yii::$app->request->hostInfo . '/' . $relativePath;
+        //var_dump($accessUrl);
         return $accessUrl;
     }
 
