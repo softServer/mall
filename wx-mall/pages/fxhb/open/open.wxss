@@ -1,4 +1,4 @@
-@import "../../../__wuBaseWxss__/19.wxss";
+@import "../../../wuBaseWxss/19.wxss";
 
 .hongbao {
     position: fixed;
