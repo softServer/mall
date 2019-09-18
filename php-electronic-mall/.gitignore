@@ -3,4 +3,6 @@
 ##############################
 runtime
 logs
-.idea
+doc/tool
+/.env
+.idea/

@@ -1,3 +1,7 @@
 
 php-electronic-mall/.env
 *.log
+wx-mall/project.config.json
+wx-mall/siteinfo.js
+wx-mall/project.config.json
+wx-mall/siteinfo.js
