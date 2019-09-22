@@ -969,14 +969,14 @@ if (!$returnUrl) {
                                         <span class="label-icon"></span>
                                         <span class="label-text">货到付款</span>
                                     </label>
-                                    <label class="checkbox-label">
-                                        <input <?= $payment['balance'] == 1 ? 'checked' : null ?>
+                                    <!--<label class="checkbox-label">
+                                        <input <?/*= $payment['balance'] == 1 ? 'checked' : null */?>
                                                 value="1"
                                                 name="model[payment][balance]" type="checkbox"
                                                 class="custom-control-input">
                                         <span class="label-icon"></span>
                                         <span class="label-text">余额支付</span>
-                                    </label>
+                                    </label>-->
                                     <div class="fs-sm text-danger">若都不勾选，则视为与商城支付方式一致</div>
                                     <div class="fs-sm">可在“<a target="_blank"
                                                              href="<?= $urlManager->createUrl(['mch/recharge/setting']) ?>">营销管理=>充值=>设置</a>”中开启余额功能

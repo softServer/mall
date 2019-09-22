@@ -30,11 +30,11 @@ class Menu
                         'is_menu' => true,
                         'route' => 'mch/store/sms',
                     ],
-                    [
+                   /* [
                         'name' => '邮件通知',
                         'is_menu' => true,
                         'route' => 'mch/store/mail',
-                    ],
+                    ],*/
                     [
                         'name' => '运费规则',
                         'is_menu' => true,
@@ -75,7 +75,7 @@ class Menu
                             ],
                         ]
                     ],
-                    [
+                   /* [
                         'name' => '快递单打印',
                         'is_menu' => true,
                         'route' => 'mch/store/express',
@@ -92,8 +92,8 @@ class Menu
                                 'route' => 'mch/store/express-del',
                             ],
                         ]
-                    ],
-                    [
+                    ],*/
+                   /* [
                         'name' => '小票打印',
                         'is_menu' => true,
                         'route' => 'mch/printer/list',
@@ -109,7 +109,7 @@ class Menu
                                 'route' => 'mch/printer/edit',
                             ]
                         ],
-                    ],
+                    ],*/
                     [
                         'name' => '区域限制购买',
                         'is_menu' => true,
@@ -154,7 +154,7 @@ class Menu
                 'route' => '',
                 'icon' => 'icon-xiaochengxu3',
                 'children' => [
-                    [
+                    /*[
                         'name' => '微信小程序',
                         'is_menu' => true,
                         'route' => '',
@@ -192,7 +192,7 @@ class Menu
                                 'route' => 'mch/store/wxapp-nomch',
                             ],
                         ],
-                    ],
+                    ],*/
                     [
                         'key' => 'alipay',
                         'name' => '支付宝小程序',
@@ -405,11 +405,11 @@ class Menu
                             ]
                         ]
                     ],
-                    [
+                   /* [
                         'name' => '淘宝CSV上传',
                         'is_menu' => true,
                         'route' => 'mch/goods/taobao-copy',
-                    ],
+                    ],*/
                 ],
             ],
             [
@@ -580,7 +580,7 @@ class Menu
                             ],
                         ]
                     ],
-                    [
+                    /*[
                         'name' => '核销员',
                         'is_menu' => true,
                         'route' => 'mch/user/clerk',
@@ -621,10 +621,10 @@ class Menu
                         'name' => '积分充值记录',
                         'is_menu' => true,
                         'route' => 'mch/user/integral-rechange-list',
-                    ],
+                    ],*/
                 ],
             ],
-            [
+           /* [
                 'key' => 'share',
                 'name' => '分销中心',
                 'is_menu' => true,
@@ -714,7 +714,7 @@ class Menu
                         ]
                     ],
                 ],
-            ],
+            ],*/
             [
                 'name' => '内容管理',
                 'is_menu' => true,
@@ -931,7 +931,7 @@ class Menu
                             ],
                         ],
                     ],
-                    [
+                    /*[
                         'name' => '充值',
                         'is_menu' => true,
                         'route' => 'mch/recharge/index',
@@ -947,7 +947,7 @@ class Menu
                                 'route' => 'mch/recharge/setting',
                             ],
                         ],
-                    ],
+                    ],*/
                 ],
             ],
             [
