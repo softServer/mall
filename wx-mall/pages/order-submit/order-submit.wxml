@@ -52,7 +52,6 @@
                 </view>
             </view>
             <view class="mch-item" wx:if="{{goods_list&&goods_list.length>0}}">
-                <view class="mch-header">平台自营</view>
                 <view class="cart-list">
                     <view class="flex-col " wx:for="{{goods_list}}">
                         <view class="cart-item flex-row border-bottom">
@@ -118,7 +117,7 @@
                             </view>
                             <view>门店地址：{{shop.address}}</view>
                         </view>
-                        <view class="flex-grow-0 flex-y-center" wx:if="{{shop_list.length>1}}">
+                        <view class="flex-grow-0 flex-y-center" wx:if="{{shop_list.length>0}}">
                             <view wx:if="{{!shop}}">请选择门店</view>
                             <image src="{{__wxapp_img.store.jiantou_r.url}}" style="width: 12rpx;height: 22rpx;margin-left: 12rpx"></image>
                         </view>

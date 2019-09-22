@@ -118,7 +118,7 @@
                                 <view>{{item.shop.mobile}}</view>
                                 <view>{{item.shop.address}}</view>
                             </view>
-                            <view class="flex-grow-0 flex-y-center" wx:if="{{item.shop_list.length>1}}">
+                            <view class="flex-grow-0 flex-y-center" wx:if="{{item.shop_list.length>0}}">
                                 <view wx:if="{{!item.shop}}">请选择门店</view>
                                 <image src="{{__wxapp_img.store.jiantou_r.url}}" style="width: 12rpx;height: 22rpx;margin-left: 20rpx"></image>
                             </view>
