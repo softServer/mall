@@ -59,10 +59,10 @@ $open_register = Option::get('open_register', 0, 'admin', false);
 
     .card .custom-checkbox .custom-control-indicator {
         border: 1px solid #ccc;
-        background-color: #00FF00;
     }
     .card .custom-control-input:checked ~ .custom-control-indicator {
         border-color: transparent;
+        background-color: #00FF00;
     }
 
     .header {
@@ -187,7 +187,7 @@ $open_register = Option::get('open_register', 0, 'admin', false);
         el: '#app',
         data: {
             admin_list: [],
-        },
+        }
     });
     $(function(){
         loadAccountInfo();
