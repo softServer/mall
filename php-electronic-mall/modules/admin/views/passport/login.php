@@ -59,9 +59,8 @@ $open_register = Option::get('open_register', 0, 'admin', false);
 
     .card .custom-checkbox .custom-control-indicator {
         border: 1px solid #ccc;
-        background-color: #eee;
+        background-color: #00FF00;
     }
-
     .card .custom-control-input:checked ~ .custom-control-indicator {
         border-color: transparent;
     }
@@ -106,8 +105,8 @@ $open_register = Option::get('open_register', 0, 'admin', false);
     <div class="card">
         <div class="card-body">
             <h1>管理员登录</h1>
-            <input class="form-control mb-3 username" name="username" placeholder="请输入用户名">
-            <input class="form-control mb-3 password" name="password" placeholder="请输入密码" type="password">
+            <input class="form-control mb-3 username" name="username" id="username" placeholder="请输入用户名">
+            <input class="form-control mb-3 password" name="password" id="userpasswd" placeholder="请输入密码" type="password">
             <div class="form-inline mb-3">
                 <div class="w-100">
                     <input class="form-control captcha_code" name="captcha_code" placeholder="图片验证码" style="width: 150px">
@@ -118,7 +117,7 @@ $open_register = Option::get('open_register', 0, 'admin', false);
                 </div>
             </div>
             <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input">
+                <input type="checkbox" class="custom-control-input" id="rememberPassword">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">记住我，以后自动登录</span>
             </label>
@@ -190,6 +189,28 @@ $open_register = Option::get('open_register', 0, 'admin', false);
             admin_list: [],
         },
     });
+    $(function(){
+        loadAccountInfo();
+    });
+    function loadAccountInfo(){
+        var accountInfo = getCookie('accountInfo');
+        if(Boolean(accountInfo) == false){
+            console.log('cookie中没有检测到账号信息！');
+            return false;
+        } else{
+            console.log('cookie中检测到账号信息！现在开始预填写！');
+            var userName = "";
+            var passWord = "";
+            var index = accountInfo.indexOf("&");
+
+            userName = accountInfo.substring(0,index);
+            passWord = accountInfo.substring(index+1);
+
+            $(".username").attr("value",userName);
+            $(".password").attr("value",passWord);
+            $("#rememberPassword").prop("checked",true);
+        }
+    }
     $(document).on('click', '.refresh-captcha', function () {
         var img = $(this);
         var refresh_url = img.attr('data-refresh');
@@ -205,6 +226,7 @@ $open_register = Option::get('open_register', 0, 'admin', false);
     $(document).on('click', '.login', function () {
         var username = $('.username').val();
         var password = $('.password').val();
+        var rememberStatus =  $("#rememberPassword").prop("checked");
         var captcha_code = $('.captcha_code').val();
         $.ajax({
             url:'<?=Yii::$app->urlManager->createUrl('admin/passport/login')?>',
@@ -214,7 +236,7 @@ $open_register = Option::get('open_register', 0, 'admin', false);
                 'username': username,
                 'password': password,
                 'captcha_code': captcha_code,
-                _csrf: _csrf,
+                _csrf: _csrf
             },
             success:function (res) {
                 if (res.code === 1) {
@@ -222,12 +244,23 @@ $open_register = Option::get('open_register', 0, 'admin', false);
                         content: res.msg
                     });
                 }else  {
+                    if (rememberStatus){
+                        console.log("勾选了记住密码，现在开始写入cookie");
+                        var accountInfo = username + '&' + password;
+                        setCookie('accountInfo', accountInfo);
+                    } else {
+                        console.log("没有勾选记住密码，现在开始删除账号cookie");
+                        delCookie('accountInfo');
+                    }
                     location.href = "<?= \Yii::$app->urlManager->createUrl(['admin/app/entry', 'id' => 1]) ?>";
                 }
             }
         })
     });
-
+    $(document).on('click', '#rememberPassword', function () {
+        var rememberStatus =  $("#rememberPassword").prop("checked");
+        console.log(rememberStatus);
+    });
     $(document).on('click', '.send-sms-code', function () {
         var form = document.getElementById('send_sms_code_form');
         var mobile = form.mobile.value;
@@ -307,4 +340,28 @@ $open_register = Option::get('open_register', 0, 'admin', false);
         });
     });
 
+    //写cookies
+    function setCookie(name,value)
+    {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days*24*60*60*1000);
+        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+    }
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    function delCookie(name)
+    {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null)
+            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
 </script>
