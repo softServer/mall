@@ -77,6 +77,53 @@
                 </view>
             </view>
         </view>
+        <view class="flex-row" style="height: 100%;padding-top: 100rpx" wx:if="{{store.cat_style==6}}">
+            <view class="flex-grow-0" style="height:100%;background: #fff">
+                <scroll-view class="cat-list" scrollY="true" style="height: 100%;width: 204rpx">
+                    <view bindtap="goodsAll" class="cat-item {{item.active?'active':''}} flex-y-center flex-x-center" data-index="{{index}}" id="{{item.id}}" wx:for="{{cat_list}}" wx:key="{{item.id}}">
+                        <view class="cat-name">{{item.name}}</view>
+                    </view>
+                </scroll-view>
+            </view>
+         <view class="flex-grow-1" style="background: #f6dae1">
+                <view style="position: fixed;top: 100rpx;left: 200rpx;bottom: 0;right: 0;z-index:0;overflow: hidden">
+                    <scroll-view class="sub-cat-box cat-block-list" scrollTop="{{sub_cat_list_scroll_top}}" scrollY="true" style="height: 100%;padding: 20rpx;padding-bottom: 115rpx">
+                        <view class="cat-small-style cat-num-3 flex-row" wx:if="{{store.cat_style==6}}">
+            <!-- <navigator class="goods-item" openType="navigate" url="/pages/goods/goods?id={{item.id}}" wx:for="{{goods_list}}" wx:key="{{item.id}}">
+                <image class="goods-pic" mode="aspectFill" src="{{item.pic_url}}"></image>
+                <view class="goods-info" style="padding:5rpx 20rpx;">
+                    <text class="mb-10 text-more-2" style="height:2.8em;line-height:1.4;">{{item.name}}</text>
+                    <view class="flex-row">
+                        <view class="flex-grow-1" style="color:#ff334b">
+                            <block wx:if="{{item.is_negotiable!=1}}">￥</block>{{item.price}}</view>
+                        <view class="flex-grow-0 fs-sm" style="color:#999;" wx:if="{{__is_sales}}">已售{{item.sales}}</view>
+                    </view>
+                </view>
+            </navigator> -->
+            
+              <view class="products_container" wx:for="{{goods_list}}" wx:for-index="goods_index" wx:for-item="item" wx:key="{{item.id}}">
+                    <navigator class="products_item flex-row" url="/pages/goods/goods?id={{item.id}}">
+                        <view class="flex-grow-0 product_logo">
+                            <image class="product_logo" style="height:200rpx;width:200rpx" mode="aspectFill" src="{{item.pic_url}}"></image>
+                        </view>
+                        <view class="product_bd flex-grow-1 flex-col" style="margin-left:32rpx;justify-content:space-between">
+                            <view class="text-more-2" style="margin-top:30rpx;">{{item.name}}</view>
+                            <view class="flex-row flex-y-center">
+                                <view class="new_price flex-grow-1" style="color:#ff4544;ont-size:10pt;">
+                                    <block wx:if="{{item.is_negotiable!=1}}" >￥</block>{{item.price}}</view>
+                                <view class="sales_price flex-grow-0" style="color:#999;ont-size:8pt;">已售{{item.sales}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view style="position:absolute;width:95%" wx:if="{{false}}">
+                        <image catchtap="showshop" class="toCart" data-id="{{goods.id}}" src="{{__wxapp_img.store.home_gwc.url}}"></image>
+                    </view>
+                </view>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+            </view>
         <view id="catall" style="padding-top: 100rpx;background: #fff;position:fixed;top:0;width:100%;z-index:40">
             <view wx:if="{{store.cat_style==5}}">
                 <scroll-view class="group-top scroll-view-x">

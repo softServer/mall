@@ -38,7 +38,7 @@ Page({
             }), getApp().request({
                 url: getApp().api.default.cat_list,
                 success: function(t) {
-                    0 == t.code && (a.data.cat_list = t.data.list, 5 === e.cat_style && a.goodsAll({
+                  0 == t.code && (a.data.cat_list = t.data.list, (5 === e.cat_style || 6 === e.cat_style) && a.goodsAll({
                         currentTarget: {
                             dataset: {
                                 index: 0
