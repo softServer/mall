@@ -80,6 +80,7 @@ $this->params['active_nav_group'] = 1;
                                 <span class="upload-preview-tip">200&times;200</span>
                                 <img class="upload-preview-img" src="<?= $list['pic_url'] ?>">
                             </div>
+                            <div class="text-muted fs-sm">一级分类不建议上传，二级分类建议上传</div>
                         </div>
                     </div>
                 </div>

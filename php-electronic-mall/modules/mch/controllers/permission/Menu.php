@@ -362,6 +362,24 @@ class Menu
                 'icon' => 'icon-service',
                 'children' => [
                     [
+                        'name' => '分类',
+                        'is_menu' => true,
+                        'route' => 'mch/store/cat',
+                        'sub' => [
+                            [
+                                'name' => '商品分类(S|U)',
+                                'is_menu' => false,
+                                'route' => 'mch/store/cat-edit',
+                            ]
+                        ],
+                        'action' => [
+                            [
+                                'name' => '商品分类删除',
+                                'route' => 'mch/store/cat-del'
+                            ]
+                        ]
+                    ],
+                    [
                         'name' => '商品管理',
                         'is_menu' => true,
                         'route' => 'mch/goods/goods',
@@ -385,24 +403,6 @@ class Menu
                                 'name' => '商品(上架|下架)',
                                 'route' => 'mch/goods/goods-up-down'
                             ],
-                        ]
-                    ],
-                    [
-                        'name' => '分类',
-                        'is_menu' => true,
-                        'route' => 'mch/store/cat',
-                        'sub' => [
-                            [
-                                'name' => '商品分类(S|U)',
-                                'is_menu' => false,
-                                'route' => 'mch/store/cat-edit',
-                            ]
-                        ],
-                        'action' => [
-                            [
-                                'name' => '商品分类删除',
-                                'route' => 'mch/store/cat-del'
-                            ]
                         ]
                     ],
                    /* [
