@@ -1,3 +1,6 @@
+<view >
+<include src="/components/_toast/_toast"></include>
+</view>
 <view class="page {{__page_classes}}">
     <include src="/components/common/common"></include>
     <include src="/components/header/header"></include>

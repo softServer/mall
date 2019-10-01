@@ -1,4 +1,5 @@
 <view class="page">
+    <include src="/components/_toast/_toast"></include>
     <include src="/components/common/common"></include>
     <include src="/components/header/header"></include>
     <view class="body after-navber">
