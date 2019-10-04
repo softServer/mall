@@ -389,6 +389,7 @@ module.exports = {
         }), console.log("点击会弹出弹框");
     },
     getUserInfo: function(o) {
+      this.setUserInfoShowFalse();
         var n = this;
         "getUserInfo:ok" == o.detail.errMsg && getApp().core.login({
             success: function(e) {
