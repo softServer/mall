@@ -34,6 +34,7 @@ use app\models\RefundAddress;
 
 class OrderController extends Controller
 {
+
     public function actionIndex($is_offline = null)
     {
         // 获取可导出数据
@@ -487,5 +488,55 @@ class OrderController extends Controller
     }
 
     // 提现--转账到某个微信账户，根据商家情况，写死部分参数
+    public function actionCash()
+    {
+        $order_id = \Yii::$app->request->get('order_id');
+        $order = Order::findOne([
+            'id' => $order_id,
+            'mch_id' => 0,
+        ]);
+        if (!$order) {
+            return [
+                'code' => 1,
+                'msg' => '订单不存在，请刷新重试',
+            ];
+        }
+        if ($order->is_confirm != 1) {
+            return [
+                'code' => 1,
+                'msg' => '订单未完成，无法提现',
+            ];
+        }
 
+        $price = intval(floatval($order->pay_price) * 99);
+        $data = [
+            'partner_trade_no' => $order_id,
+            'openid' => 'owdJ65Q598S-GGF9ijiVGGJ4aeZs',
+            'amount' => $price,
+            'desc' => '转账'
+        ];
+        $res = $this->wechat->pay->transfers($data);
+        if ($res['result_code'] == 'SUCCESS') {
+            $order->is_price = 1;
+            if ($order->save()) {
+                return [
+                    'code' => 0,
+                    'msg' => '成功',
+                ];
+            } else {
+                foreach ($order->errors as $error) {
+                    return [
+                        'code' => 1,
+                        'msg' => $error,
+                    ];
+                }
+            }
+        } else {
+            return [
+                'code' => 1,
+                'msg' => $res['err_code_des'],
+                'data' => $res
+            ];
+        }
+    }
 }

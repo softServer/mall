@@ -449,19 +449,23 @@ $urlPlatform = Yii::$app->requestedRoute;
                                    data-content="是否确认收货？">确认收货</a>
                             </div>
                         <?php endif; ?>
-                        <?php if ($order_item['is_recycle'] == 1) : ?>
-                            <div>
-                                <a class="btn btn-sm btn-primary del mt-2" href="javascript:"
-                                   data-url="<?= $urlManager->createUrl([$urlStr . '/edit', 'order_id' => $order_item['id'], 'is_recycle' => 0]) ?>"
-                                   data-content="是否移出回收站">移出回收站</a>
-                            </div>
-                        <?php else : ?>
-                            <div>
-                                <a class="btn btn-sm btn-danger del mt-2" href="javascript:"
-                                   data-url="<?= $urlManager->createUrl([$urlStr . '/edit', 'order_id' => $order_item['id'], 'is_recycle' => 1]) ?>"
-                                   data-content="是否移入回收站">移入回收站</a>
-                            </div>
-                        <?php endif; ?>
+                        <div>
+                            <?php if ($order_item['is_recycle'] == 1) : ?>
+                                    <a class="btn btn-sm btn-primary del mt-2" href="javascript:"
+                                       data-url="<?= $urlManager->createUrl([$urlStr . '/edit', 'order_id' => $order_item['id'], 'is_recycle' => 0]) ?>"
+                                       data-content="是否移出回收站">移出回收站</a>
+                            <?php else : ?>
+                                    <a class="btn btn-sm btn-danger del mt-2" href="javascript:"
+                                       data-url="<?= $urlManager->createUrl([$urlStr . '/edit', 'order_id' => $order_item['id'], 'is_recycle' => 1]) ?>"
+                                       data-content="是否移入回收站">移入回收站</a>
+
+                            <?php endif; ?>
+                            <?php if ($order_item['is_confirm'] == 1 && $order_item['is_price'] == 0) : ?>
+                                    <a href="javascript:" class="btn btn-sm btn-primary mt-2 del"
+                                       data-url="<?= $urlManager->createUrl([$urlStr . '/cash', 'order_id' => $order_item['id']]) ?>"
+                                       data-content="是否确认提现？">提现</a>
+                            <?php endif; ?>
+                        </div>
                     </td>
                 </tr>
                 <tr>
