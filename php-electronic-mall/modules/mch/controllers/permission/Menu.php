@@ -1763,20 +1763,6 @@ class Menu
                 ],
             ],
             [
-                'admin' => true,
-                'name' => '安装应用',
-                'is_menu' => true,
-                'route' => 'mch/plugin/index',
-                'icon' => 'icon-manage',
-                'sub' => [
-                    [
-                        'name' => '应用详情',
-                        'is_menu' => false,
-                        'route' => 'mch/plugin/detail',
-                    ]
-                ],
-            ],
-            [
                 'name' => '教程管理',
                 'is_menu' => true,
                 'icon' => 'icon-iconxuexi',
