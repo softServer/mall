@@ -1,3 +1,4 @@
+<include src="/components/_toast/_toast"></include>
 <view class="page">
     <include src="/components/common/common"></include>
     <include src="/components/header/header"></include>
