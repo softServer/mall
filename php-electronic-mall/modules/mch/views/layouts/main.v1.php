@@ -149,8 +149,8 @@ try {
             <a class="text-overflow-ellipsis"
                href="<?= $urlManager->createUrl(['mch/store']) ?>"><?= $this->context->store->name ?></a>
             <div style="font-size: .85rem;color: #bbb;display: none">
-                <a href="http://cloud.zjhejiang.com/we7/mall/" target="_blank">禾匠商城</a>
-                <span>v<?= $this->context->version ?></span>
+                <!--<a href="http://cloud.zjhejiang.com/we7/mall/" target="_blank">禾匠商城</a>
+                <span>v<?/*= $this->context->version */?></span>-->
             </div>
         </div>
         <div class="nav-group <?= $this->params['active_nav_group'] == 1 ? 'active' : null ?>">
