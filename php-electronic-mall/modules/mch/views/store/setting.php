@@ -855,6 +855,13 @@ $this->params['active_nav_group'] = 1;
                             <span class="label-icon"></span>
                             <span class="label-text">商品列表模式</span>
                         </label>
+                        <label class="radio-label">
+                            <input id="radio1" <?= $store->cat_style == 6 ? 'checked' : null ?>
+                                   value="6"
+                                   name="cat_style" type="radio" class="custom-control-input">
+                            <span class="label-icon"></span>
+                            <span class="label-text">侧栏商品模式</span>
+                        </label>
                     </div>
                 </div>
 

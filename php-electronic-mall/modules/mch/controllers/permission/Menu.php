@@ -624,7 +624,7 @@ class Menu
                     ],*/
                 ],
             ],
-           /* [
+            [
                 'key' => 'share',
                 'name' => '分销中心',
                 'is_menu' => true,
@@ -714,7 +714,7 @@ class Menu
                         ]
                     ],
                 ],
-            ],*/
+            ],
             [
                 'name' => '内容管理',
                 'is_menu' => true,
